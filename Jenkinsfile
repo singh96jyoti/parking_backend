@@ -9,7 +9,7 @@ pipeline {
 	stage('Build') {
 		steps {
 			withSonarQubeEnv('sonar') {
-				sh '/usr/share/mvn clean verify sonar:sonar -Dmaven.test.skip=true'
+				sh '/opt/maven/bin/mvn clean verify sonar:sonar -Dmaven.test.skip=true'
 			}
 		}
 	}
@@ -24,7 +24,7 @@ pipeline {
 	stage ('Deploy') {
 		steps {
 			
-			sh '/usr/share/mvn clean deploy -Dmaven.test.skip=true'
+			sh '/opt/maven/bin/mvn clean deploy -Dmaven.test.skip=true'
 		}
 	}
 	stage ('Release') {
